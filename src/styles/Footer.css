@@ -1,0 +1,118 @@
+.footer {
+  background: var(--bg-secondary);
+  border-top: 2px solid var(--border-color);
+  padding: 4.5rem 0 3rem;
+  color: var(--text-primary);
+  margin-top: 5rem;
+  position: relative;
+  box-shadow: 0 -4px 15px rgba(0, 255, 102, 0.08);
+}
+
+:root.light .footer {
+  box-shadow: 0 -4px 15px rgba(255, 176, 0, 0.08);
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.footer-cta {
+  margin-bottom: 0.5rem;
+  max-width: 600px;
+}
+
+.footer-cta h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  text-shadow: 0 0 6px var(--border-color);
+}
+
+.footer-cta p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--border-radius-sm);
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0, 255, 102, 0.1);
+  transition: all var(--transition-fast);
+}
+
+:root.light .social-circle {
+  box-shadow: 0 0 5px rgba(255, 176, 0, 0.1);
+}
+
+.social-circle:hover {
+  background: var(--border-color);
+  color: var(--bg-primary);
+  box-shadow: 0 0 12px var(--border-color);
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  width: 100%;
+  border-top: 2px solid var(--border-color);
+  padding-top: 2rem;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-built {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(0, 255, 102, 0.08);
+  border: 1.5px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 0 5px rgba(0, 255, 102, 0.1);
+}
+
+:root.light .footer-built {
+  background: rgba(255, 176, 0, 0.08);
+  box-shadow: 0 0 5px rgba(255, 176, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    gap: 2rem;
+  }
+  
+  .footer-copy {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}
