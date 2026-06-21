@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client';
+import { unstable_cache } from 'next/cache';
 
 const notion = new Client({
   auth: process.env.NOTION_API_KEY?.trim(),
@@ -82,49 +83,56 @@ function parsePost(page: any): Post {
   };
 }
 
-export async function getPublishedPosts(): Promise<Post[]> {
-  if (!DATABASE_ID) {
-    console.error('NOTION_DATABASE_ID environment variable is missing');
-    return [];
-  }
-  try {
-    const response = await notion.request<any>({
-      path: `databases/${DATABASE_ID}/query`,
-      method: 'post',
-      body: {
-        filter: {
-          property: 'Status',
-          select: {
-            equals: 'Published',
-          },
-        },
-        sorts: [
-          {
-            property: 'Published Date',
-            direction: 'descending',
-          },
-        ],
-      },
-    });
-
-    const posts = response.results.map(parsePost);
-
-    // Fill reading times
-    for (const post of posts) {
-      try {
-        const blocks = await getPageBlocks(post.id);
-        post.readingTime = calculateReadingTime(blocks);
-      } catch (err) {
-        console.error(`Failed to calculate reading time for post ID ${post.id}:`, err);
-      }
+export const getPublishedPosts = unstable_cache(
+  async (): Promise<Post[]> => {
+    if (!DATABASE_ID) {
+      console.error('NOTION_DATABASE_ID environment variable is missing');
+      return [];
     }
+    try {
+      const response = await notion.request<any>({
+        path: `databases/${DATABASE_ID}/query`,
+        method: 'post',
+        body: {
+          filter: {
+            property: 'Status',
+            select: {
+              equals: 'Published',
+            },
+          },
+          sorts: [
+            {
+              property: 'Published Date',
+              direction: 'descending',
+            },
+          ],
+        },
+      });
 
-    return posts;
-  } catch (error) {
-    console.error('Error fetching posts from Notion database:', error);
-    return [];
+      const posts = response.results.map(parsePost);
+
+      // Fill reading times
+      for (const post of posts) {
+        try {
+          const blocks = await getPageBlocks(post.id);
+          post.readingTime = calculateReadingTime(blocks);
+        } catch (err) {
+          console.error(`Failed to calculate reading time for post ID ${post.id}:`, err);
+        }
+      }
+
+      return posts;
+    } catch (error) {
+      console.error('Error fetching posts from Notion database:', error);
+      return [];
+    }
+  },
+  ['published-posts'],
+  {
+    revalidate: 300, // 5 minutes
+    tags: ['posts'],
   }
-}
+);
 
 export async function getDataSourceId(): Promise<string> {
   if (cachedDataSourceId) return cachedDataSourceId;
@@ -142,53 +150,64 @@ export async function getDataSourceId(): Promise<string> {
   return cachedDataSourceId;
 }
 
-export async function getPostBySlug(slug: string): Promise<{ post: Post; blocks: any[] } | null> {
-  if (!DATABASE_ID) {
-    console.error('NOTION_DATABASE_ID environment variable is missing');
-    return null;
-  }
-  try {
-    const response = await notion.request<any>({
-      path: `databases/${DATABASE_ID}/query`,
-      method: 'post',
-      body: {
-        filter: {
-          and: [
-            {
-              property: 'Slug',
-              rich_text: {
-                equals: slug,
+const fetchPostBySlug = unstable_cache(
+  async (slug: string): Promise<{ post: Post; blocks: any[] } | null> => {
+    if (!DATABASE_ID) {
+      console.error('NOTION_DATABASE_ID environment variable is missing');
+      return null;
+    }
+    try {
+      const response = await notion.request<any>({
+        path: `databases/${DATABASE_ID}/query`,
+        method: 'post',
+        body: {
+          filter: {
+            and: [
+              {
+                property: 'Slug',
+                rich_text: {
+                  equals: slug,
+                },
               },
-            },
-            {
-              property: 'Status',
-              select: {
-                equals: 'Published',
+              {
+                property: 'Status',
+                select: {
+                  equals: 'Published',
+                },
               },
-            },
-          ],
+            ],
+          },
         },
-      },
-    });
+      });
 
-    if (response.results.length === 0) return null;
-    const page = response.results[0];
+      if (response.results.length === 0) return null;
+      const page = response.results[0];
 
-    const post = parsePost(page);
-    const status = (page as any).properties.Status?.select?.name;
-    if (status !== 'Published') return null;
+      const post = parsePost(page);
+      const status = (page as any).properties.Status?.select?.name;
+      if (status !== 'Published') return null;
 
-    const blocks = await getPageBlocks(page.id);
-    post.readingTime = calculateReadingTime(blocks);
+      const blocks = await getPageBlocks(page.id);
+      post.readingTime = calculateReadingTime(blocks);
 
-    return {
-      post,
-      blocks,
-    };
-  } catch (error) {
-    console.error(`Error querying post with slug ${slug}:`, error);
-    return null;
+      return {
+        post,
+        blocks,
+      };
+    } catch (error) {
+      console.error(`Error querying post with slug ${slug}:`, error);
+      return null;
+    }
+  },
+  ['post-by-slug'],
+  {
+    revalidate: 300, // 5 minutes
+    tags: ['posts'],
   }
+);
+
+export async function getPostBySlug(slug: string): Promise<{ post: Post; blocks: any[] } | null> {
+  return fetchPostBySlug(slug);
 }
 
 export async function getPageBlocks(pageId: string): Promise<any[]> {
