@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../components/Card';
+import TerminalCard from '../components/TerminalCard';
 import { SECTION_HEADERS } from '../constants';
 import { ExperienceItem } from '../data/portfolioData';
 
@@ -32,16 +32,16 @@ export default function Experience({ experience }: ExperienceProps) {
                 <div className="timeline-dot"></div>
                 
                 <div className="timeline-content">
-                  <Card className="experience-card">
-                    <div className="experience-header">
-                      <div className="role-company-group">
-                        <h3 className="role-title">{exp.role}</h3>
-                        <h4 className="company-name">{exp.company}</h4>
-                      </div>
-                      <span className="experience-period">{exp.period}</span>
-                    </div>
-                    <p className="experience-desc">{exp.description}</p>
-                  </Card>
+                  <TerminalCard 
+                    className="experience-card"
+                    headerPath={`~/work/${exp.company.toLowerCase().replace(/ /g, '-')}`}
+                    headerBadge="WORK"
+                    title={exp.role}
+                    subtitle={exp.company}
+                    dateFrom={exp.period.split(' - ')[0] || exp.period}
+                    dateTo={exp.period.split(' - ')[1] || 'Present'}
+                    description={exp.description}
+                  />
                 </div>
               </div>
             ))}

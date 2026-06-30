@@ -26,6 +26,20 @@ export default function LeetcodePage() {
     async function fetchLeetcodeStats() {
       try {
         setLoading(true);
+        const cacheKey = `leetcode_data_${username}`;
+        const cached = localStorage.getItem(cacheKey);
+        
+        if (cached) {
+          const { timestamp, data: cachedData } = JSON.parse(cached);
+          // Cache validity: 2 hours
+          if (Date.now() - timestamp < 7200000) {
+            setData(cachedData);
+            setError(false);
+            setLoading(false);
+            return;
+          }
+        }
+
         // Fetch solved stats
         const solvedRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}/solved`);
         const solvedData = await solvedRes.json();
@@ -38,7 +52,7 @@ export default function LeetcodePage() {
         const calendarRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}/calendar`);
         const calendarData = await calendarRes.json();
 
-        setData({
+        const finalData = {
           solvedProblem: solvedData.solvedProblem || 431,
           easySolved: solvedData.easySolved || 264,
           mediumSolved: solvedData.mediumSolved || 131,
@@ -48,7 +62,14 @@ export default function LeetcodePage() {
           streak: calendarData.streak || 96,
           totalActiveDays: calendarData.totalActiveDays || 186,
           submissionCalendar: JSON.parse(calendarData.submissionCalendar || '{}')
-        });
+        };
+
+        localStorage.setItem(cacheKey, JSON.stringify({
+          timestamp: Date.now(),
+          data: finalData
+        }));
+
+        setData(finalData);
         setError(false);
       } catch (err) {
         console.error('Failed to fetch Leetcode data:', err);

@@ -1,8 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { ThemeProvider } from '../context/ThemeContext';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { NavbarWrapper, FooterWrapper } from '../components/NavigationWrapper';
 import ScrollRevealObserver from '../components/ScrollRevealObserver';
 import ConstellationBackground from '../components/ConstellationBackground';
 import { portfolioData } from '../data/portfolioData';
@@ -57,13 +56,13 @@ export default function RootLayout({
             <div className="glowing-orb orb-purple"></div>
             <div className="glowing-orb orb-pink"></div>
 
-            <Navbar personalInfo={personalInfo} />
+            <NavbarWrapper personalInfo={personalInfo} />
             
             <main className="main-content">
               {children}
             </main>
             
-            <Footer personalInfo={personalInfo} />
+            <FooterWrapper personalInfo={personalInfo} />
             <ScrollRevealObserver />
           </div>
         </ThemeProvider>

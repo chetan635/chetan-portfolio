@@ -36,7 +36,7 @@
   padding: 0.35rem 0.85rem;
   border-radius: 4px;
   box-shadow: none;
-  animation: heroSlideUp 0.6s var(--transition-slow) both;
+  animation: heroSlideUp 1.2s var(--transition-slow) both;
 }
 
 .badge-pulse-svg {
@@ -68,7 +68,7 @@
   line-height: 1.05;
   font-size: clamp(2.8rem, 7vw, 4.5rem);
   font-weight: 800;
-  animation: heroSlideUp 0.6s var(--transition-slow) 0.08s both;
+  animation: heroSlideUp 1.2s var(--transition-slow) 0.08s both;
   letter-spacing: -0.04em;
   text-wrap: balance;
 }
@@ -93,7 +93,7 @@
   margin-top: 0.1rem;
   line-height: 1.1;
   text-transform: none;
-  animation: heroSlideUp 0.6s var(--transition-slow) 0.15s both;
+  animation: heroSlideUp 1.2s var(--transition-slow) 0.15s both;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
@@ -102,7 +102,7 @@
   font-size: 1.05rem;
   max-width: 500px;
   color: var(--text-secondary);
-  animation: heroSlideUp 0.6s var(--transition-slow) 0.22s both;
+  animation: heroSlideUp 1.2s var(--transition-slow) 0.22s both;
   text-wrap: pretty;
   line-height: 1.6;
 }
@@ -111,7 +111,7 @@
   display: flex;
   gap: 1rem;
   margin-top: 0.5rem;
-  animation: heroSlideUp 0.6s var(--transition-slow) 0.3s both;
+  animation: heroSlideUp 1.2s var(--transition-slow) 0.3s both;
 }
 
 /* IDE Visual Style & Wireframe */
@@ -122,7 +122,7 @@
   width: 100%;
   position: relative;
   min-height: 380px;
-  animation: heroFadeScale 0.8s var(--transition-slow) 0.35s both;
+  animation: heroFadeScale 1.6s var(--transition-slow) 0.35s both;
 }
 
 .hero-wireframe-container {
@@ -284,7 +284,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-  animation: heroSlideUp 0.6s var(--transition-slow) 0.5s both, floatY 4s ease-in-out infinite;
+  animation: heroSlideUp 1.2s var(--transition-slow) 0.5s both, floatY 4s ease-in-out infinite;
 }
 
 .scroll-arrow {

@@ -13,8 +13,17 @@ export default async function Page() {
   }
 
   return (
-    <div className="terminal-page-container">
-      <Terminal latestPosts={latestPosts} />
-    </div>
+    <>
+      <style>{`
+        .main-content {
+          padding: 0 !important;
+          margin: 0 !important;
+          max-width: none !important;
+        }
+      `}</style>
+      <div className="terminal-page-container">
+        <Terminal latestPosts={latestPosts} />
+      </div>
+    </>
   );
 }

@@ -8,11 +8,12 @@ interface TerminalProps {
   latestPosts: any[];
 }
 
-const ASCII_ART = ` ██████  ██   ██ ███████ ████████  █████  ███    ██     ██████  ███████ ██    ██
-██       ██   ██ ██         ██    ██   ██ ████   ██     ██   ██ ██      ██    ██
-██       ███████ █████      ██    ███████ ██ ██  ██     ██   ██ █████   ██    ██
-██       ██   ██ ██         ██    ██   ██ ██  ██ ██     ██   ██ ██       ██  ██
- ██████  ██   ██ ███████    ██    ██   ██ ██   ████  ██ ██████  ███████   ████`;
+const ASCII_ART = `██╗  ██╗███████╗██╗   ██╗    ██╗   ███╗   ███╗     ██████╗██╗  ██╗███████╗████████╗ █████╗ ███╗   ██╗   
+██║  ██║██╔════╝╚██╗ ██╔╝    ██║▄█╗████╗ ████║    ██╔════╝██║  ██║██╔════╝╚══██╔══╝██╔══██╗████╗  ██║   
+███████║█████╗   ╚████╔╝     ██║╚═╝██╔████╔██║    ██║     ███████║█████╗     ██║   ███████║██╔██╗ ██║   
+██╔══██║██╔══╝    ╚██╔╝      ██║   ██║╚██╔╝██║    ██║     ██╔══██║██╔══╝     ██║   ██╔══██║██║╚██╗██║   
+██║  ██║███████╗   ██║▄█╗    ██║   ██║ ╚═╝ ██║    ╚██████╗██║  ██║███████╗   ██║   ██║  ██║██║ ╚████║██╗
+╚═╝  ╚═╝╚══════╝   ╚═╝╚═╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝`;
 
 export default function Terminal({ latestPosts }: TerminalProps) {
   const router = useRouter();
@@ -51,8 +52,14 @@ export default function Terminal({ latestPosts }: TerminalProps) {
               <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>LOC</div>
               <div>San Francisco, CA</div>
 
+              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>ABOUT</div>
+              <div>I build high-performance web apps and integrate advanced AI capabilities. I turn complex ideas into elegant digital solutions with a strong eye for design.</div>
+
               <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>STACK</div>
-              <div>React · Next.js · Node.js · TypeScript · Python · Docker · AWS</div>
+              <div>React · Next.js · Node.js · TypeScript · Python · Postgres · Docker · AWS · Gemini API</div>
+
+              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>STATUS</div>
+              <div><span className="terminal-yellow-text">●</span> Open to new opportunities and collaborations!</div>
             </div>
             <br />
           </div>
@@ -115,11 +122,11 @@ export default function Terminal({ latestPosts }: TerminalProps) {
           <div className="terminal-command-help">
             <p className="terminal-blue-text" style={{ fontWeight: 'bold' }}>Available commands:</p>
             <div className="terminal-help-grid">
-              <div style={{ fontWeight: 'bold' }}>ls products</div><div>— list products / apps</div>
+              <div style={{ fontWeight: 'bold' }}>ls about</div><div>— view about info</div>
               <div style={{ fontWeight: 'bold' }}>ls projects</div><div>— list projects</div>
               <div style={{ fontWeight: 'bold' }}>ls blog</div><div>— list blog posts</div>
               <div style={{ fontWeight: 'bold' }}>ls socials</div><div>— list social links</div>
-              <div style={{ fontWeight: 'bold' }}>cd products</div><div>— go to products</div>
+              <div style={{ fontWeight: 'bold' }}>cd about</div><div>— go to about page</div>
               <div style={{ fontWeight: 'bold' }}>cd projects</div><div>— go to projects</div>
               <div style={{ fontWeight: 'bold' }}>cd blog</div><div>— go to blog</div>
               <div style={{ fontWeight: 'bold' }}>cat cv</div><div>— quick CV overview</div>
@@ -135,7 +142,15 @@ export default function Terminal({ latestPosts }: TerminalProps) {
           </div>
         );
         break;
-      case 'ls products':
+      case 'ls about':
+        output = (
+          <div className="terminal-list-about">
+            <p className="terminal-blue-text" style={{ fontWeight: 'bold' }}>About Me:</p>
+            <p className="terminal-gray-text" style={{ lineHeight: '1.6' }}>{portfolioData.personalInfo.bio}</p>
+            <br />
+          </div>
+        );
+        break;
       case 'ls projects':
         output = (
           <div className="terminal-list-projects">
@@ -180,7 +195,10 @@ export default function Terminal({ latestPosts }: TerminalProps) {
           </div>
         );
         break;
-      case 'cd products':
+      case 'cd about':
+        output = <p className="terminal-gray-text">Navigating to about...</p>;
+        setTimeout(() => router.push('/about'), 600);
+        break;
       case 'cd projects':
         output = <p className="terminal-gray-text">Navigating to projects...</p>;
         setTimeout(() => router.push('/projects'), 600);
@@ -242,8 +260,14 @@ export default function Terminal({ latestPosts }: TerminalProps) {
               <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>LOC</div>
               <div>San Francisco, CA</div>
 
+              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>ABOUT</div>
+              <div>I build high-performance web apps and integrate advanced AI capabilities. I turn complex ideas into elegant digital solutions with a strong eye for design.</div>
+
               <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>STACK</div>
-              <div>React · Next.js · Node.js · TypeScript · Python · Docker · AWS</div>
+              <div>React · Next.js · Node.js · TypeScript · Python · Postgres · Docker · AWS · Gemini API</div>
+
+              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>STATUS</div>
+              <div><span className="terminal-yellow-text">●</span> Open to new opportunities and collaborations!</div>
             </div>
             <br />
           </div>
@@ -267,15 +291,7 @@ export default function Terminal({ latestPosts }: TerminalProps) {
   return (
     <div className="terminal-wrapper" onClick={handleTerminalClick}>
       <div className="terminal-window">
-        {/* Terminal Header */}
-        <div className="terminal-bar">
-          <div className="terminal-window-dots">
-            <span className="terminal-window-dot red"></span>
-            <span className="terminal-window-dot yellow"></span>
-            <span className="terminal-window-dot green"></span>
-          </div>
-          <div className="terminal-title">visitor@Chetandev: ~</div>
-        </div>
+        {/* Terminal Header Removed */}
 
         {/* Terminal History */}
         <div className="terminal-body">

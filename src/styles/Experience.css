@@ -74,7 +74,7 @@
 }
 
 :root.dark .experience-card {
-  background: rgba(14, 16, 23, 0.5) !important;
+  background: rgba(14, 16, 23, 0.834) !important;
 }
 
 .experience-card:hover {
@@ -144,17 +144,17 @@
   .timeline::before {
     left: 12px;
   }
-  
+
   .timeline-dot {
     left: 9px;
     width: 8px;
     height: 8px;
   }
-  
+
   .timeline-item {
     padding-left: 32px;
   }
-  
+
   .experience-header {
     flex-direction: column;
     align-items: flex-start;

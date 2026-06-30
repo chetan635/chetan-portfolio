@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Card from '../components/Card';
+import TerminalCard from '../components/TerminalCard';
 import Button from '../components/Button';
 import { SECTION_HEADERS, PROJECTS_STRINGS } from '../constants';
 import { Project } from '../data/portfolioData';
@@ -52,60 +52,21 @@ export default function Projects({ projects }: ProjectsProps) {
           
           <div key={selectedTag} className="grid-3 projects-grid projects-grid-animate stagger-children">
             {filteredProjects.map((project, idx) => (
-              <Card 
-                key={project.id} 
+              <TerminalCard
+                key={project.id}
                 className="project-card reveal-on-scroll reveal-scale"
                 style={{ transitionDelay: `${idx * 0.08}s` } as React.CSSProperties}
-              >
-                <div className="project-image-container">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="project-image"
-                    loading="lazy"
-                  />
-                  <div className="project-overlay">
-                    <div className="overlay-links">
-                      <Button 
-                        href={project.githubLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        variant="secondary"
-                        size="sm"
-                      >
-                        {PROJECTS_STRINGS.BTN_GITHUB}
-                      </Button>
-                      <Button 
-                        href={project.liveLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        variant="primary"
-                        size="sm"
-                      >
-                        {PROJECTS_STRINGS.BTN_LIVE}
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="project-details">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-desc">{project.description}</p>
-                  
-                  <div className="project-tags">
-                    {project.tags.map((tag) => (
-                      <span 
-                        key={tag} 
-                        className={`badge tag-badge ${selectedTag === tag ? 'active-tag' : ''}`}
-                        onClick={() => setSelectedTag(tag)}
-                        style={{ cursor: 'pointer' }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Card>
+                headerPath={`~/projects/${project.title.toLowerCase().replace(/ /g, '-')}`}
+                headerBadge="PROJECT"
+                title={project.title}
+                subtitle={<span className="terminal-card-subtitle-highlight">Personal Project</span>}
+                description={project.description}
+                techStack={project.tags}
+                links={[
+                  { label: PROJECTS_STRINGS.BTN_GITHUB, url: project.githubLink },
+                  { label: PROJECTS_STRINGS.BTN_LIVE, url: project.liveLink }
+                ].filter(l => l.url !== '#')}
+              />
             ))}
           </div>
         </div>

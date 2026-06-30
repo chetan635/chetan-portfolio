@@ -15,7 +15,7 @@
 }
 
 :root.dark .project-card {
-  background: rgba(14, 16, 23, 0.5) !important;
+  background: rgba(14, 16, 23, 0.828) !important;
 }
 
 .project-card:hover {

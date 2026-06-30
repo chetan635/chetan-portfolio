@@ -12,7 +12,7 @@ export interface PersonalInfo {
 
 export interface SkillItem {
   name: string;
-  level: number;
+  icon: string;
 }
 
 export interface SkillCategory {
@@ -60,28 +60,36 @@ export const portfolioData: PortfolioData = {
     {
       category: "Frontend",
       items: [
-        { name: "React / Next.js", level: 90 },
-        { name: "JavaScript / TypeScript", level: 95 },
-        { name: "CSS3 / Sass / Tailwind", level: 88 },
-        { name: "HTML5 / Responsive Design", level: 95 }
+        { name: "React", icon: "react-original" },
+        { name: "Next.js", icon: "nextjs-original" },
+        { name: "TypeScript", icon: "typescript-original" },
+        { name: "JavaScript", icon: "javascript-original" },
+        { name: "Tailwind", icon: "tailwindcss-original" },
+        { name: "HTML5", icon: "html5-original" },
+        { name: "CSS3", icon: "css3-original" },
+        { name: "Sass", icon: "sass-original" }
       ]
     },
     {
       category: "Backend & DB",
       items: [
-        { name: "Node.js / Express", level: 85 },
-        { name: "Python / Django", level: 80 },
-        { name: "PostgreSQL / MongoDB", level: 82 },
-        { name: "GraphQL / REST APIs", level: 90 }
+        { name: "Node.js", icon: "nodejs-original" },
+        { name: "Express", icon: "express-original" },
+        { name: "Python", icon: "python-original" },
+        { name: "PostgreSQL", icon: "postgresql-original" },
+        { name: "MongoDB", icon: "mongodb-original" },
+        { name: "GraphQL", icon: "graphql-plain" }
       ]
     },
     {
       category: "DevOps & Tools",
       items: [
-        { name: "Git / GitHub Actions", level: 90 },
-        { name: "Docker / Kubernetes", level: 75 },
-        { name: "AWS / Vercel", level: 80 },
-        { name: "AI APIs (OpenAI, Gemini)", level: 85 }
+        { name: "Git", icon: "git-original" },
+        { name: "GitHub", icon: "github-original" },
+        { name: "Docker", icon: "docker-original" },
+        { name: "AWS", icon: "amazonwebservices-original-wordmark" },
+        { name: "Figma", icon: "figma-original" },
+        { name: "Jest", icon: "jest-plain" }
       ]
     }
   ],

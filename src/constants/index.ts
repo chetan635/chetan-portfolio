@@ -10,12 +10,12 @@ export interface NavLink {
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { label: 'About', href: '/#about' },
-  { label: 'Skills', href: '/#skills' },
-  { label: 'Projects', href: '/#projects' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Projects', href: '/projects' },
   { label: 'Blogs', href: '/blogs' },
+  { label: 'CV', href: '/cv' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const MARQUEE_ITEMS = [
