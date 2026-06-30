@@ -46,11 +46,11 @@ export interface PortfolioData {
 
 export const portfolioData: PortfolioData = {
   personalInfo: {
-    name: "Alex Dev",
+    name: "Chetan Dev",
     title: "Full Stack Developer & AI Engineer",
     subheading: "Building beautiful, functional, and intelligent web experiences.",
     bio: "I am a passionate software engineer specializing in building high-performance web applications and integrating advanced AI capabilities. With a strong eye for design and detail, I turn complex ideas into elegant digital solutions.",
-    email: "alex@example.com",
+    email: "Chetan@example.com",
     github: "https://github.com",
     linkedin: "https://linkedin.com",
     twitter: "https://twitter.com",

@@ -27,7 +27,8 @@
 .project-image-container {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  padding-top: 56.25%;
+  /* 16:9 Aspect Ratio */
   overflow: hidden;
   background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
@@ -119,6 +120,7 @@
   text-transform: none;
   text-shadow: none;
   transition: color var(--transition-fast);
+  text-wrap: balance;
 }
 
 .project-card:hover .project-title {
@@ -128,8 +130,9 @@
 .project-desc {
   font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
   flex-grow: 1;
+  text-wrap: pretty;
 }
 
 .project-tags {
@@ -207,6 +210,7 @@
     opacity: 0;
     transform: translateY(12px) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);

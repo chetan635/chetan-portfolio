@@ -2,18 +2,29 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTheme } from '../context/ThemeContext';
-import { NAV_LINKS, THEMES } from '../constants';
+import { THEMES } from '../constants';
 import { PersonalInfo } from '../data/portfolioData';
 
 interface NavbarProps {
   personalInfo: PersonalInfo;
 }
 
+const NAV_PILLS = [
+  { label: 'home', href: '/' },
+  { label: 'about', href: '/about' },
+  { label: 'projects', href: '/projects' },
+  { label: 'blog', href: '/blogs' },
+  { label: 'cv', href: '/cv' },
+  { label: 'contact', href: '/contact' }
+];
+
 export default function Navbar({ personalInfo }: NavbarProps) {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,19 +38,29 @@ export default function Navbar({ personalInfo }: NavbarProps) {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <Link href="/" className="navbar-logo">
-          <span className="logo-dot">&lt;</span>
-          {personalInfo.name.split(' ')[0]}
-          <span className="logo-dot"> /&gt;</span>
+        <Link href="/" className="navbar-logo font-mono text-sm">
+          Chetandev@portfolio:<span className="terminal-green-text">~</span>$
         </Link>
 
-        {/* Desktop Menu */}
+        {/* Desktop Menu - Terminal pills without 'cd' prefix */}
         <div className="navbar-links">
-          {NAV_LINKS.map((link) => (
-            <Link key={link.label} href={link.href} className="nav-link">
-              {link.label}
-            </Link>
-          ))}
+          {NAV_PILLS.map((pill) => {
+            const isActive =
+              pill.href === '/'
+                ? pathname === '/'
+                : pathname.startsWith(pill.href);
+            return (
+              <Link
+                key={pill.label}
+                href={pill.href}
+                className={`nav-pill font-mono ${isActive ? 'active' : ''}`}
+              >
+                {isActive && <span className="nav-pill-dot">●</span>}
+                {pill.label}
+              </Link>
+            );
+          })}
+
           <button
             className="theme-toggle-btn"
             onClick={toggleTheme}
@@ -89,18 +110,25 @@ export default function Navbar({ personalInfo }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile Menu dropdown */}
+      {/* Mobile Menu dropdown - pills navigation */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
-        {NAV_LINKS.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            className="mobile-nav-link"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {NAV_PILLS.map((pill) => {
+          const isActive =
+            pill.href === '/'
+              ? pathname === '/'
+              : pathname.startsWith(pill.href);
+          return (
+            <Link
+              key={pill.label}
+              href={pill.href}
+              className={`mobile-nav-link font-mono ${isActive ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {isActive && <span className="nav-pill-dot mr-1">●</span>}
+              {pill.label}
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );

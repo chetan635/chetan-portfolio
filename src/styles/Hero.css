@@ -52,17 +52,25 @@
 }
 
 @keyframes ping {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(2.4); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
 }
 
 .hero-name {
   margin: 0;
-  line-height: 1.15;
+  line-height: 1.05;
   font-size: clamp(2.8rem, 7vw, 4.5rem);
-  font-weight: 700;
+  font-weight: 800;
   animation: heroSlideUp 0.6s var(--transition-slow) 0.08s both;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
 }
 
 .name-highlight {
@@ -83,10 +91,11 @@
   font-weight: 600;
   color: var(--text-primary);
   margin-top: 0.1rem;
-  line-height: 1.2;
+  line-height: 1.1;
   text-transform: none;
   animation: heroSlideUp 0.6s var(--transition-slow) 0.15s both;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .hero-subheading {
@@ -94,6 +103,8 @@
   max-width: 500px;
   color: var(--text-secondary);
   animation: heroSlideUp 0.6s var(--transition-slow) 0.22s both;
+  text-wrap: pretty;
+  line-height: 1.6;
 }
 
 .hero-actions {
@@ -179,9 +190,17 @@
   display: inline-block;
 }
 
-.ide-dot.red { background-color: rgba(255, 95, 86, 0.8); }
-.ide-dot.yellow { background-color: rgba(255, 189, 46, 0.8); }
-.ide-dot.green { background-color: rgba(39, 201, 63, 0.8); }
+.ide-dot.red {
+  background-color: rgba(255, 95, 86, 0.8);
+}
+
+.ide-dot.yellow {
+  background-color: rgba(255, 189, 46, 0.8);
+}
+
+.ide-dot.green {
+  background-color: rgba(39, 201, 63, 0.8);
+}
 
 .ide-tabs {
   display: flex;
@@ -300,6 +319,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -311,6 +331,7 @@
     opacity: 0;
     transform: scale(0.97) translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -318,8 +339,13 @@
 }
 
 @keyframes terrainUndulate {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-4px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-4px);
+  }
 }
 
 .terminal-cursor {
@@ -333,7 +359,9 @@
 }
 
 @keyframes blinkCursor {
-  to { visibility: hidden; }
+  to {
+    visibility: hidden;
+  }
 }
 
 @media (max-width: 968px) {
@@ -345,21 +373,21 @@
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
+
   .hero-content {
     align-items: center;
     text-align: center;
   }
-  
+
   .hero-subheading {
     max-width: 100%;
   }
-  
+
   .hero-actions {
     justify-content: center;
     width: 100%;
   }
-  
+
   .hero-visual {
     min-height: auto;
   }
@@ -371,7 +399,7 @@
     width: 100%;
     align-items: center;
   }
-  
+
   .hero-actions .btn {
     width: 100%;
     max-width: 260px;

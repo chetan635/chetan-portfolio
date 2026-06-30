@@ -4,6 +4,7 @@ import { ThemeProvider } from '../context/ThemeContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ScrollRevealObserver from '../components/ScrollRevealObserver';
+import ConstellationBackground from '../components/ConstellationBackground';
 import { portfolioData } from '../data/portfolioData';
 
 // Global styles
@@ -19,6 +20,8 @@ import '../styles/Experience.css';
 import '../styles/Contact.css';
 import '../styles/Blogs.css';
 import '../components/Footer.css';
+import '../styles/Terminal.css';
+import '../styles/Leetcode.css';
 
 export const metadata: Metadata = {
   title: {
@@ -46,6 +49,9 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <div className="app-container">
+            {/* Interactive Constellation Background */}
+            <ConstellationBackground />
+
             {/* Background Decorative Glowing Orbs */}
             <div className="glowing-orb orb-cyan"></div>
             <div className="glowing-orb orb-purple"></div>
