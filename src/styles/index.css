@@ -11,9 +11,9 @@
   --border-radius-md: 10px;
   --border-radius-lg: 16px;
 
-  --transition-fast: 0.6s ease;
-  --transition-normal: 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --transition-slow: 2.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-slow: 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* Sleek Light Theme Variables */
