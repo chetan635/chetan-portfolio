@@ -8,13 +8,168 @@ interface TerminalProps {
   latestPosts: any[];
 }
 
-const ASCII_ART = `██╗  ██╗███████╗██╗   ██╗    ██╗   ███╗   ███╗     ██████╗██╗  ██╗███████╗████████╗ █████╗ ███╗   ██╗   
-██║  ██║██╔════╝╚██╗ ██╔╝    ██║▄█╗████╗ ████║    ██╔════╝██║  ██║██╔════╝╚══██╔══╝██╔══██╗████╗  ██║   
-███████║█████╗   ╚████╔╝     ██║╚═╝██╔████╔██║    ██║     ███████║█████╗     ██║   ███████║██╔██╗ ██║   
-██╔══██║██╔══╝    ╚██╔╝      ██║   ██║╚██╔╝██║    ██║     ██╔══██║██╔══╝     ██║   ██╔══██║██║╚██╗██║   
-██║  ██║███████╗   ██║▄█╗    ██║   ██║ ╚═╝ ██║    ╚██████╗██║  ██║███████╗   ██║   ██║  ██║██║ ╚████║██╗
-╚═╝  ╚═╝╚══════╝   ╚═╝╚═╝    ╚═╝   ╚═╝     ╚═╝     ╚═════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝`;
+const APPLE_ASCII = `                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                      :: ..*=+#%*---+:--                                                                  
+                                                                 .+=:..   ... ::--++=+: .....                                                             
+                                                               +*#*+--=+++##*=+**##@@@@%+.      -                                                         
+                                                             =#**.=*+*#@@@@###***#%%@@@@@@#*: .                                                           
+                                                            @=..=+#@@@@@@@@@@@@@@@@@@@@@@@@@@#+     .                                                     
+                                                          +=.:.+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#+    .                                                    
+                                                         -=-.-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#:   :.                                                  
+                                                        .+:.=*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=:-=-                                                  
+                                                        :***#%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%=.-=.                                                 
+                                                        *%%##@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*+--:                                                 
+                                                       .+##%%@%%@@%%#%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#=-:                                                 
+                                                       :+*##%@@%%%%%#%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@%%#=-                   ............................  
+                                                        =*##@@@@@%%%@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*:::.::::::....:::::::::--:::-------------:::----  
+                                                        =+#%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#-----------------------------=-===------------==  
+                          ... .........::..:::::::::::. =+%@@@%@@@@@@@@#%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*.=------==----=====================------=======  
+     .  .........::::.:::::::::::::::::-----:::::::::--:-+%%%%@@#-..       -=#%%%@@@%%%#+=++*#%@@@@@@@@*====-----=======================================  
+  ........::::::::::::::::-::::----------------------#@+-+%%%%*   .-=+=:    .-+*####*=:        :::#@@@%+-===============================================  
+  ...:::::::::--------------------------------------+ =#=#@%%+---==-...   ...:=*%%#+=:..::=*###*+- *@@%-====--=============================------=======  
+  ...::::::::--------:::---------------------------+::-==%@@%+-.        -: ::-+#@@@%+:      :+. =++#@@%*@#*=----=====---====================-----=--=---  
+  ...:....::::::::::::::::::::::::::-::::----------#:+*==%@@%*=----=+==+##+=+*##@@@%#++#+.  :=  .:+#@@@%. %=----==----=============-========------------  
+  .............:::::::::::::::::::::::::-----------*-*#--%@@@@@%++-.   .-+**####@@@%#%#=::=***+==+*%@@@##:++-=---====-=============--======-------------  
+  ..............:::::::::::::::::::::::------------=-+*+#%@@@@@@@@%@@@@%%###+*##@@@@#%@@@%@%%%#%@@@@@@%+@=++=-----------============--------------------  
+     ............:::::::::::::::::::::::::::::::::--*+*+*%@@@@@@@@@@@@@@@@***+#%@@@@@##@@@@@@@@@@@@@@@%=#+#=------------============-=------------------  
+       ..   .....::::::::::::::::::::::::::::::::::-%#@@*#%#%@@@@@@@@@%#+=*%@#%@@@@@@@@%*%@@@@@@@@@@@@%+@++=---------------==----======-----------------  
+          .........:::::::::::::::::::::::-----:::::*@@#*#***##%%%%%%#+:-*=-: :=**+==#%%--*%@@@@@@@@@@@@@@===-------========-============---------------  
+          .........::::::::::::::::::::::-------:::::@@@*++===+*****=-:=##=:          =#@*-**%@@@@%#%%%@@@=-------------==-=============----------------  
+         ...........:::::::::::::::::::::-------:::::-#*+=====---=-. ::.              .-+#=--=##%#*##%#@@%=--------------=---============---------------  
+          ..............::::::::::::::::::::-:::::::::-====-===+==-.    :=++*+++: =*+==:.  -===+++***##@*=-------------------============--------------:  
+      .   .......................:::::::::::::::::::::--==-==-==***:       .=.=- ..::--=.    =*+++++*++-=-----------------------=========--------------:  
+      .   .................:......::::::::::::::::::::--.---======*=  =+-:#:--@@@@@@@-*      +*+++++++=---------------------------=====--------------:::  
+             ...  ...................::::::::::::::::::: .::-====--- .+**+-=#%%#####%**#%*- =+===+++++--------------------=----------------------::::::.  
+                    ...............:..::::::::::::::::::   . :----:  -+#+=++=::=+=--+###%#: :===+===---------------------------------------------::::::.  
+                    ..............:=#@@@@@@@@@@@@@@@@@@@+             .++++-:       -*%%%++  :-=-.:. -----------------------------------------:---:-::::  
+                   ..............:=@@@@@@@@@@@@@@@@@@@@@@=.           .+%###*+=-==*#%%%#+:.         ----------------------------------------------::::::  
+                   ....   ........*@@@@@@@@@@@@@@@@@@@@@@*=+           .+#%@%#+*#*%@@@#+-          ----------------------------------------------:::::::  
+                    ..     .......+@@@@@@@@@@@@@@@@@@@@@@#=+-             =+-==*+*+#*+.          ::---------------------------------------------::::::::  
+                           .......=@@@@@@@@@@@@@@@@@@@@@@*=+=-.               ..:  .:          :----:----------------------::::-------:-:-::----::::::::  
+                           .......-@@@@@@@@@@@@@@@@@@@# +@%+=--:.                            .-+.::-::::::--::::-----------:::::::::::::-:::::::::::::::  
+                            ......:@@@@@@@@@@@@@@@@-.  @@@#+====-:                          :-=*@@.--::::::::::::-::::::-:-:::::::::::::::::::::::::::::  
+                                  :@@@@@@@@@@@@*:.     =@@#+===---=:.                    .:-==+*@#* ::=+=--:::::::::::::::::::::::::.::::::::::::::.::.:  
+                                  .*@@@@@@*:. . ..      .%%+++++=-----:..            .::-====++#@=%    :==++++-::::::::::::::::::::..:::::::::::::::::::  
+                                   .-:.                   +#****++=-------:.       .:---====++*@@#*    .::-==+====-:::::::::::::::....:::::::::::::::...  
+                                .:                          *##***++===---:::....::---====+++*@@%%     ...:--::--=-===::::::::::::....:::::::.:::::::...  
+                             .. .                             *#%%**++=====---::::::---===+#%%%%=      ....:-:::-:---====::::::::::..:::::::::..........  
+                          .....                                 +%#####*****+====-====+*###%%%#        .. .....:--:::--=====-----:::..:::::.............  
+                      .:...... .                                   :%%%%%%%####*****#######*.         .    .....:..:.:::---====--:::::::::.....:........  
+                   .::::::.......                                         -*%%%@%%%*-                     . ... .......::::---==+=:::::.................  
+                .--:::::....  .                                                                                     .........::----=-::.................  
+              :=-:..:.                                                                                                 .  . ....:::--=-:..........    ..  
+           .--::...                                                                                                            .....:::-::::......     .  
+         .--::..                                                                                                                 :.  ....-:.......        
+        --:...                                                                                                                    .   . . :-.....         
+      .-:....                                                                                                                              .:.            
+        . .                                                                                                                                 .:.           
+                                                                                                                                             . .          
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                           :                              
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                                                          
+                                                                                                                                                       :  
+                                                                                                                                                      =*  
+                                                                                                                                                      =*  
+                                                                                                                                                          
+                                                                                                                                                          `;
 
+const WhoamiComponent = ({ portfolioData }: { portfolioData: any }) => {
+  const [lcStats, setLcStats] = useState<any>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    const fetchStats = async () => {
+      try {
+        const username = 'chetanchinchulkar635';
+        const cacheKey = `leetcode_stats_basic_${username}`;
+        const cached = localStorage.getItem(cacheKey);
+
+        if (cached) {
+          const { timestamp, data } = JSON.parse(cached);
+          if (Date.now() - timestamp < 7200000) {
+            if (mounted) setLcStats(data);
+            return;
+          }
+        }
+
+        const solvedRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}/solved`);
+        const solvedData = await solvedRes.json();
+        const profileRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}`);
+        const profileData = await profileRes.json();
+
+        const data = {
+          solved: solvedData.solvedProblem || 0,
+          ranking: profileData.ranking || 0,
+          easy: solvedData.easySolved || 0,
+          medium: solvedData.mediumSolved || 0,
+          hard: solvedData.hardSolved || 0,
+        };
+
+        localStorage.setItem(cacheKey, JSON.stringify({ timestamp: Date.now(), data }));
+        if (mounted) setLcStats(data);
+      } catch (err) {
+        console.error(err);
+        if (mounted) setLcStats({ error: true });
+      }
+    };
+    fetchStats();
+    return () => { mounted = false; };
+  }, []);
+
+  return (
+    <div className="neofetch-container">
+      <div className="neofetch-ascii">
+        <pre>{APPLE_ASCII}</pre>
+      </div>
+      <div className="neofetch-info">
+        <div className="neofetch-title">
+          <span className="neofetch-user">chetan@dev</span> <span className="neofetch-divider">------------------------------------</span>
+        </div>
+
+        <div className="neofetch-row"><span className="neofetch-key">. OS:</span><span className="neofetch-dots"></span><span className="neofetch-val">macOS 14.5, Linux</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. Uptime:</span><span className="neofetch-dots"></span><span className="neofetch-val">24 years, 3 months, 12 days</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. Host:</span><span className="neofetch-dots"></span><span className="neofetch-val">Innovate AI / ByteCraft</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. Kernel:</span><span className="neofetch-dots"></span><span className="neofetch-val">Full Stack Developer & AI Engineer</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. IDE:</span><span className="neofetch-dots"></span><span className="neofetch-val">VSCode, Cursor, NeoVim</span></div>
+
+        <br />
+
+        <div className="neofetch-row"><span className="neofetch-key">. Languages.Programming:</span><span className="neofetch-dots"></span><span className="neofetch-val">TypeScript, JavaScript, Python</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. Languages.Computer:</span><span className="neofetch-dots"></span><span className="neofetch-val">HTML, CSS, JSON, YAML</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. Languages.Real:</span><span className="neofetch-dots"></span><span className="neofetch-val">English, Hindi</span></div>
+
+        <br />
+
+        <div className="neofetch-row"><span className="neofetch-key">. Hobbies.Software:</span><span className="neofetch-dots"></span><span className="neofetch-val">Open Source, AI Models</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. Hobbies.Hardware:</span><span className="neofetch-dots"></span><span className="neofetch-val">Mechanical Keyboards, IoT</span></div>
+
+        <br />
+        <div className="neofetch-subtitle">- Contact -----------------------------------------</div>
+        <div className="neofetch-row"><span className="neofetch-key">. Email.Personal:</span><span className="neofetch-dots"></span><span className="neofetch-val">{portfolioData.personalInfo.email}</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. LinkedIn:</span><span className="neofetch-dots"></span><span className="neofetch-val">ChetanDev</span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. Twitter:</span><span className="neofetch-dots"></span><span className="neofetch-val">chetan_dev</span></div>
+
+        <br />
+        <div className="neofetch-subtitle">- LeetCode Stats ---------------------------------------</div>
+        <div className="neofetch-row"><span className="neofetch-key">. Ranking:</span><span className="neofetch-dots"></span><span className="neofetch-val">
+          {lcStats ? (lcStats.error ? 'Failed to load' : lcStats.ranking.toLocaleString()) : 'Loading...'}
+        </span></div>
+        <div className="neofetch-row"><span className="neofetch-key">. Solved:</span><span className="neofetch-dots"></span><span className="neofetch-val">
+          {lcStats ? (lcStats.error ? 'Failed to load' : `${lcStats.solved} ( `) : 'Loading...'}
+        </span></div>
+      </div>
+    </div>
+  );
+};
 export default function Terminal({ latestPosts }: TerminalProps) {
   const router = useRouter();
   const [history, setHistory] = useState<Array<{ command: string; output: React.ReactNode }>>([]);
@@ -42,35 +197,14 @@ export default function Terminal({ latestPosts }: TerminalProps) {
       },
       {
         command: 'whoami',
-        output: (
-          <div className="terminal-whoami">
-            <pre className="terminal-ascii-art">{ASCII_ART}</pre>
-            <div className="terminal-details-grid">
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>ROLE</div>
-              <div>Full Stack Developer & AI Engineer</div>
-
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>LOC</div>
-              <div>San Francisco, CA</div>
-
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>ABOUT</div>
-              <div>I build high-performance web apps and integrate advanced AI capabilities. I turn complex ideas into elegant digital solutions with a strong eye for design.</div>
-
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>STACK</div>
-              <div>React · Next.js · Node.js · TypeScript · Python · Postgres · Docker · AWS · Gemini API</div>
-
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>STATUS</div>
-              <div><span className="terminal-yellow-text">●</span> Open to new opportunities and collaborations!</div>
-            </div>
-            <br />
-          </div>
-        )
+        output: <WhoamiComponent portfolioData={portfolioData} />
       }
     ];
     setHistory(initialHistory);
   }, []);
 
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    terminalEndRef.current?.scrollIntoView({ behavior: 'auto' });
   }, [history]);
 
   const handleTerminalClick = () => {
@@ -197,25 +331,25 @@ export default function Terminal({ latestPosts }: TerminalProps) {
         break;
       case 'cd about':
         output = <p className="terminal-gray-text">Navigating to about...</p>;
-        setTimeout(() => router.push('/about'), 600);
+        router.push('/about');
         break;
       case 'cd projects':
         output = <p className="terminal-gray-text">Navigating to projects...</p>;
-        setTimeout(() => router.push('/projects'), 600);
+        router.push('/projects');
         break;
       case 'cd blog':
       case 'cd blogs':
         output = <p className="terminal-gray-text">Navigating to blog...</p>;
-        setTimeout(() => router.push('/blogs'), 600);
+        router.push('/blogs');
         break;
       case 'cd cv':
         output = <p className="terminal-gray-text">Navigating to CV...</p>;
-        setTimeout(() => router.push('/cv'), 600);
+        router.push('/cv');
         break;
       case 'cd leetcode':
       case 'leetcode':
         output = <p className="terminal-gray-text">Navigating to LeetCode Stats...</p>;
-        setTimeout(() => router.push('/leetcode'), 600);
+        router.push('/leetcode');
         break;
       case 'cat cv':
         output = (
@@ -250,32 +384,11 @@ export default function Terminal({ latestPosts }: TerminalProps) {
         ]);
         return;
       case 'whoami':
-        output = (
-          <div className="terminal-whoami">
-            <pre className="terminal-ascii-art">{ASCII_ART}</pre>
-            <div className="terminal-details-grid">
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>ROLE</div>
-              <div>Full Stack Developer & AI Engineer</div>
-
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>LOC</div>
-              <div>San Francisco, CA</div>
-
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>ABOUT</div>
-              <div>I build high-performance web apps and integrate advanced AI capabilities. I turn complex ideas into elegant digital solutions with a strong eye for design.</div>
-
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>STACK</div>
-              <div>React · Next.js · Node.js · TypeScript · Python · Postgres · Docker · AWS · Gemini API</div>
-
-              <div className="terminal-green-text" style={{ fontWeight: 'bold' }}>STATUS</div>
-              <div><span className="terminal-yellow-text">●</span> Open to new opportunities and collaborations!</div>
-            </div>
-            <br />
-          </div>
-        );
+        output = <WhoamiComponent portfolioData={portfolioData} />;
         break;
       case 'contact':
         output = <p className="terminal-gray-text">Navigating to contact...</p>;
-        setTimeout(() => router.push('/contact'), 600);
+        router.push('/contact');
         break;
       case 'clear':
         setHistory([]);

@@ -48,7 +48,7 @@ export default function LeetcodePage() {
         const profileRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}`);
         const profileData = await profileRes.json();
 
-        // Fetch calendar stats
+        // Fetch calendar statsonly
         const calendarRes = await fetch(`https://alfa-leetcode-api.onrender.com/${username}/calendar`);
         const calendarData = await calendarRes.json();
 
